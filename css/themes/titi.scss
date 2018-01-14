@@ -1,0 +1,217 @@
+/**
+ * Custom theme for reveal.js.
+ *
+ * By Sébastien Buchoux - seb-buch.github.io
+ */
+// Default mixins and settings -----------------
+@import "../../reveal.js/css/theme/template/mixins";
+@import "../../reveal.js/css/theme/template/settings";
+// ---------------------------------------------
+// Include theme-specific fonts
+@import url(../../reveal.js/lib/font/source-sans-pro/source-sans-pro.css);
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: #2e2e2e;
+$headingColor: #2a76dd;
+$conclusionColor: #0e8452;
+$warningColor: #dd601e;
+$BulletColor: #1a3e7c;
+
+$mainFontSize: 48px;
+$mainFont: 'Cabin', 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Montserrat', 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: #2a76dd;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
+
+$heading1Size: 2em;
+$heading2Size: 1.5em;
+$heading3Size: 1.2em;
+$heading4Size: 1.0em;
+
+section.has-dark-background {
+  &, h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+  }
+}
+
+// Theme template ------------------------------
+@import "../../reveal.js/css/theme/template/theme";
+// ---------------------------------------------
+
+// Displays a bibliographic reference
+.reveal .reference {
+  margin-top: 1em;
+  padding-left: 50px;
+  padding-right: 5px;
+  font-size: 0.5em;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  display: -webkit-flex;
+      -webkit-flex-direction: column;
+  float: right;
+  list-style: none;
+  border-top: 2px solid #595959;
+  color: #595959;
+
+  > li:first-child {
+    padding-top: 0.2em;
+  }
+}
+
+// Allow images to be stacked easily (for animations)
+.reveal .figure_stack {
+  & > img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
+    max-height: none;
+  }
+}
+
+// Conclusion block
+.reveal .conclusion,
+.reveal .conclusion-pb,
+.reveal .conclusion-question {
+  clear: both;
+  background: #f5f5f5;
+  border-left: 1.8em solid $conclusionColor;
+  border-radius: 8px;
+  width: auto;
+  margin: auto;
+  display: table;
+  padding: 0 .5em;
+  position: relative;
+  font-weight: bold;
+  list-style: none;
+  line-height: 1.5em;
+}
+
+.reveal .conclusion-pb {
+  border-left-color: $warningColor;
+}
+
+.reveal .conclusion-question {
+  border-left-color: #1a6091;
+}
+
+.reveal .conclusion:before,
+.reveal .conclusion-pb:before,
+.reveal .conclusion-question:before {
+  font-family: "FontAwesome", sans-serif;
+  font-size: 1em;
+  line-height: 1.2em;
+  height: 1.2em;
+  position: absolute;
+  left: -1.35em;
+  color: #fefefe;
+  margin: auto 0;
+  top: 0;
+  bottom: 0;
+  font-weight: normal;
+}
+
+.reveal .conclusion-pb:before {
+  content: "\f071";
+}
+
+.reveal .conclusion:before {
+  content: "\f00c";
+}
+
+.reveal .conclusion-question:before {
+  content: " \f128";
+}
+
+// Conclusion list
+.reveal .conclusion-list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  li {
+    padding-left: 1em;
+    text-indent: -1em;
+    margin-bottom: 0.5em;
+  }
+
+  li:before {
+    content: "\f0a4";
+    font-family: "FontAwesome", sans-serif;
+    padding-right: 10px;
+    font-size: 0.7em;
+    color: $BulletColor;
+  }
+}
+
+// Infobox
+.reveal .infobox {
+  font-size: 0.7em;
+  color: $linkColor;
+  font-weight: bold;
+}
+
+.reveal .infobox:before {
+  content: " \f05a";
+  font-family: "FontAwesome", sans-serif;
+  font-weight: normal;
+  margin-right: 10px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+// Title page stuff
+.reveal h2.title {
+  font-size: 1.3em;
+  clear: both;
+  margin-top: 300px;
+}
+
+.reveal .subtitle {
+  font-weight: normal;
+  font-size: 1em;
+}
+
+.reveal .author {
+  margin-top: 100px;
+}
+
+.reveal .author-details {
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 0.7em;
+  margin-top: 50px;
+}
+
+.reveal .author-email,
+.reveal .author-website {
+  color: $linkColor;
+  padding-left: 10px;
+}
+
+.reveal .event {
+  margin-top: 180px;
+  padding-right: 150px;
+  padding-left: 5px;
+  padding-top: 0.2em;
+  font-size: 0.5em;
+  text-align: left;
+  float: left;
+  list-style: none;
+  border-top: 2px solid #595959;
+  color: #595959;
+
+}
+
+.reveal section img {
+  background: none;
+}

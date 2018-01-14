@@ -9,17 +9,17 @@
 
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
 
+    <!-- Some style fixes -->
+    <link rel="stylesheet" type="text/css" href="css/fixes.css">
+
     <!-- Theme used for the presentation -->
     <link rel="stylesheet" href="css/themes/titi.css">
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
-    <!-- Additional styles -->
-    <link rel="stylesheet" href="css/additional.css">
-
-    <!-- Add Font awesome -->
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <!-- Add Font awesome 5.x using the new API -->
+    <script defer src="fontawesome/svg-with-js/js/fontawesome-all.js"></script>
 
     <!-- Printing and PDF exports -->
     <script>
@@ -29,6 +29,9 @@
         link.href = window.location.search.match(/print-pdf/gi) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
         document.getElementsByTagName('head')[0].appendChild(link);
     </script>
+
+    <!-- Load MathJax -->
+    <script type="text/javascript" src="MathJax/MathJax.js"></script>
 </head>
 <body>
 <div class="reveal">
@@ -38,11 +41,24 @@
             <h3 class="subtitle">subtitle</h3>
             <p class="author">Author</p>
             <p class="author-details">
-                <i class="fa fa-envelope"></i><span class="author-email">email@email.com</span>
+                <i class="fas fa-envelope"></i><span class="author-email">email@email.com</span>
                 /
-                <i class="fa fa-home"></i><span class="author-website">mywesite.com</span>
+                <i class="fas fa-home"></i><span class="author-website">mywesite.com</span>
             </p>
             <p class="event">Event/Location/Date/Whatever</p>
+        </section>
+        <section>
+            <h3>Tests</h3>
+            <p>This is a test: <sup>2</sup>H NMR is cool! Solid H<sub>2</sub>O is cold!</p>
+            <p>These are some equations:
+                $$ E~=~m \cdot c^2$$
+                $$ \sum \vec{F} ~=~ m \times \vec{a}$$
+            </p>
+            <p>These are some chemical expressions:
+                $$\ce{CO2 + C -> 2 CO}$$
+                $$C_p[\ce{H2O(l)}] = \pu{75.3 J // mol K}$$
+            </p>
+            <p class="reference">This is a reference</p>
         </section>
     </div>
 </div>
@@ -114,7 +130,7 @@
         }
         ,
         dependencies: [
-            {src: 'reveal.js/plugin/math/math.js'},
+            //{src: 'reveal.js/plugin/math/math.js'},
             {src: 'reveal.js/plugin/notes/notes.js', async: true},
             {src: 'reveal.js-plugins/reveal.js-menu/menu.js'}
             //{src: 'reveal.js-plugins/elapsed-time-bar/elapsed-time-bar.js'}
@@ -212,7 +228,7 @@
 </script>
 
 <script>
-	/* Little script that adds a timer to hide mouse cursor when idle */
+    /* Little script that adds a timer to hide mouse cursor when idle */
     var timer;
     document.addEventListener('mousemove', function () {
         document.body.style.cursor = 'default';
@@ -221,6 +237,39 @@
             document.body.style.cursor = 'none';
         }, 1500);
     }, false)
+</script>
+
+<script type="text/javascript">
+    // Reveal.js-compliant MathJax configuration
+    MathJax.Ajax.config.path["mhchem"] =
+        "./MathJax-plugins/";
+    MathJax.Hub.Config({
+        extensions: ["tex2jax.js", "[mhchem]/mhchem.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]],
+            displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+            skipTags: ['script','noscript','style','textarea','pre']
+        },
+        "HTML-CSS": {
+            availableFonts: [],
+            webFont: "STIX-Web",
+            imageFont: null
+        },
+        messageStyle: 'none',
+        skipStartupTypeset: true
+    });
+    // Typeset followed by an immediate reveal.js layout since
+    // the typesetting process could affect slide height
+    MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+    MathJax.Hub.Queue(Reveal.layout);
+
+    // Reprocess equations in slides when they turn visible
+    Reveal.addEventListener('slidechanged', function (event) {
+
+        MathJax.Hub.Queue(['Typeset', MathJax.Hub, event.currentSlide]);
+
+    });
 </script>
 
 </body>

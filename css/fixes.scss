@@ -1,0 +1,164 @@
+// Must match height and width used to configure reveal.js
+$width: 1440px;
+$height: 1080px;
+$margin: 0.1;
+
+.reveal .slides section .fragment.grow2 {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reveal .slides section .fragment.grow2.visible {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.reveal .slides section .fragment.grow3 {
+  opacity: 1;
+  visibility: visible;
+
+  &.visible {
+    transform: scale(1.15);
+  }
+}
+
+sub, sup {
+  font-size: 66% !important;
+}
+
+.reveal figcaption {
+  font-size: 0.4em;
+}
+
+.reveal figure img {
+  border: none;
+  box-shadow: none;
+  vertical-align: middle;
+}
+
+.reveal .reference {
+  margin-top: 1em;
+  padding-left: 50px;
+  padding-right: 5px;
+  font-size: 0.5em;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  display: -webkit-flex;
+			-webkit-flex-direction: column;
+  float: right;
+  list-style: none;
+  border-top: 2px solid #595959;
+  color: #595959;
+
+  > li:first-child {
+    padding-top: 0.2em;
+  }
+}
+
+// Animation BCD
+.reveal .slides section .fragment.shrinking-BCD {
+  opacity: 1;
+  visibility: visible;
+  text-align: center;
+
+  > {
+    img, figcaption {
+      opacity: 1;
+      visibility: visible;
+      transition-duration: 500ms;
+    }
+
+    img {
+      width: 720px;
+    }
+
+    figcaption {
+      font-size: 1em;
+    }
+
+    span {
+      font-size: 0.1em;
+      transition: 0.5s;
+      opacity: 0;
+      display: inline-block;
+      width: 0;
+
+      img {
+        transform: scale(0.1, 0.1);
+        transition: 0.5s;
+      }
+
+    }
+  }
+
+  &.visible {
+    > {
+      img {
+        width: 350px;
+      }
+
+      figcaption {
+        font-size: 0.5em;
+        display: none;
+      }
+
+      span {
+        opacity: 1;
+        font-size: 3em;
+
+        &.BCD-equiv {
+          width: 100px;
+        }
+
+        &.BCD-cavity {
+          width: 600px;
+        }
+
+      img {
+        transform: scale(1, 1);
+      }
+
+    }
+
+    }
+
+  }
+}
+
+
+// Animation when figure are stacked
+.reveal .figure_stack {
+  //position: relative;
+
+  & > img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none;
+    max-height: none;
+  }
+
+
+  /*&.visible.shrink-summary > img {
+    transform: scale(0.7, 0.7);
+    transition: .1s;
+    top: -100px;
+  }
+
+  &.visible.current-fragment.shrink-summary > img {
+    transform: scale(1, 1);
+    top: 0px;
+    transition-property: top;
+    transition-duration: unset;
+  }*/
+}
+
+// Styles for video
+.reveal video{
+  cursor: pointer;
+}
+
+// Misc
