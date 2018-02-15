@@ -15,15 +15,15 @@
 sub, sup {
   font-size: 66% !important; }
 
-.reveal figcaption {
+.reveal section figcaption {
   font-size: 0.4em; }
 
-.reveal figure img {
+.reveal section figure img {
   border: none;
   box-shadow: none;
   vertical-align: middle; }
 
-.reveal .reference {
+.reveal section .reference {
   margin-top: 1em;
   padding-left: 50px;
   padding-right: 5px;
@@ -37,7 +37,7 @@ sub, sup {
   list-style: none;
   border-top: 2px solid #595959;
   color: #595959; }
-  .reveal .reference > li:first-child {
+  .reveal section .reference > li:first-child {
     padding-top: 0.2em; }
 
 .reveal .slides section .fragment.shrinking-BCD {
